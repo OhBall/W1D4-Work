@@ -1,4 +1,5 @@
 require_relative "tile"
+require 'byebug'
 
 class Board
   attr_reader :grid
@@ -15,7 +16,6 @@ class Board
       nums = row.split("").map { |char| Integer(char) }
       nums.map { |num| Tile.new(num) }
     end
-
     self.new(tiles)
   end
 
@@ -34,6 +34,10 @@ class Board
     tile.value = value
   end
 
+  def rows
+    self.grid
+  end
+
   def columns
     rows.transpose
   end
@@ -49,8 +53,6 @@ class Board
   def size
     grid.size
   end
-
-  alias_method :rows, :size
 
   def solved?
     rows.all? { |row| solved_set?(row) } &&
