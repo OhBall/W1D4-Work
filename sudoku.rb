@@ -49,6 +49,14 @@ class SudokuGame
     val
   end
 
+  def parse_pos(str)
+    str.split(",").map { |coord| coord.to_i }
+  end
+
+  def parse_val(str)
+    str.to_i
+  end
+
   def play_turn
     board.render
     pos = get_pos
@@ -83,4 +91,5 @@ end
 
 
 game = SudokuGame.from_file("puzzles/sudoku1.txt")
+game = SudokuGame.from_file("puzzles/sudoku1-almost.txt")
 game.run
