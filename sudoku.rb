@@ -1,3 +1,5 @@
+require 'colorize'
+
 class Board
   def self.empty_grid
     Array.new(9) do
@@ -102,6 +104,7 @@ class Tile
     value == 0 ? " " : value.to_s.colorize(color)
   end
 
+
   def value=(new_value)
     if given?
       puts "You can't change the value of a given tile."
@@ -109,6 +112,7 @@ class Tile
       @value = new_value
     end
   end
+end
 
 class SudokuGame
   def self.from_file(filename)
